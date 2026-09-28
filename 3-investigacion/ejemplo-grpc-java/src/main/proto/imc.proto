@@ -1,0 +1,23 @@
+// Definicion del servicio con el lenguaje de descripcion de protocolos (IDL) de gRPC.
+// A partir de este archivo, gRPC genera automaticamente las clases Java del
+// mensaje y los stubs del cliente y del servidor.
+syntax = "proto3";
+
+package imc;
+
+option java_package = "com.jcaa.imc.grpc";
+option java_multiple_files = true;
+
+message DatosImc {
+  double peso = 1;
+  double altura = 2;
+}
+
+message ResultadoImc {
+  double imc = 1;
+  string interpretacion = 2;
+}
+
+service CalculoImc {
+  rpc Calcular (DatosImc) returns (ResultadoImc);
+}
